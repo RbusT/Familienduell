@@ -48,6 +48,10 @@ wss.on('connection', function(ws) {
 	
 	console.log("~~~~~~~~ WELCOME TO SERVER ~~~~~~ s:"+subscribers.length);
     ws.on('message', function(message) {
+		if(typeof message === "object") {
+			message = message.toString();
+		}
+
     	console.log('msg: ' + message);
     	var parts = message.split("###");
     	if(parts[0] != "fileOp") {
